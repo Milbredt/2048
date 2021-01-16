@@ -100,13 +100,17 @@ class Manager
             MoveStuff(15, 14, 13, 12);
         }
 
-        //felaktig
-        //reagerar bara om tal slås ihop, men ska reagera om tal rör sig mellan rutan.
+        foreach (Box box in boxList)
+        {
+            box.New = false;
+        }
+
         if (AnythingMoved == true)
         {
             AddRandom();
             AnythingMoved = false;
         }
+
 
         foreach (Box box in boxList)
         {
