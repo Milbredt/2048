@@ -9,6 +9,7 @@ namespace _2048
             Manager manager = new Manager();
             Ui ui = new Ui();
             
+            //Add deligate
             manager.CreateBoxes();    
             manager.AddRandom();      
             manager.AddRandom();      
