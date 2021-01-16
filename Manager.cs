@@ -126,17 +126,13 @@ class Manager
             boxList[b].NumberInBox = 0;
             AnythingMoved = true;
         }
-        else if (boxList[a].NumberInBox == boxList[b].NumberInBox)
+        else if (boxList[a].NumberInBox == boxList[b].NumberInBox & boxList[a].NumberInBox != 0)
         {
-            if (boxList[a].NumberInBox != 0)
-            {
-                AnythingMoved = true;
-            }
-
             boxList[a].NumberInBox = (boxList[a].NumberInBox * 2);
             Score += boxList[a].NumberInBox;
             boxList[b].NumberInBox = 0;
             boxList[a].Changed = true;
+            AnythingMoved = true;
         }
 
 
@@ -168,6 +164,7 @@ class Manager
             boxList[c].NumberInBox *= 2;
             Score += boxList[c].NumberInBox;
             boxList[d].NumberInBox = 0;
+            boxList[c].Changed = true;
             AnythingMoved = true;
 
         }
