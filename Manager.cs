@@ -65,10 +65,9 @@ class Manager
                 box.NumberInBox = randomNumber;
             }
         }
-
-        //boxList[randomBoxNumber].NumberInBox = randomNumber;
     }
 
+    // Devide into more methods.
     public void Move(ConsoleKeyInfo direction)
     {
         if (direction.Key == ConsoleKey.UpArrow) //move up
@@ -139,10 +138,7 @@ class Manager
             boxList[b].NumberInBox = 0;
             boxList[a].Changed = true;
         }
-        else if (boxList[a].NumberInBox != 0 && boxList[b].NumberInBox != 0)
-        {
-            //boxList[a].Changed = true;
-        }
+
 
         //2
         if (boxList[b].NumberInBox == 0 && boxList[c].NumberInBox != 0)
@@ -173,7 +169,7 @@ class Manager
             Score += boxList[c].NumberInBox;
             boxList[d].NumberInBox = 0;
             AnythingMoved = true;
-            //boxList[c].Changed = true; //bör inte behövas
+
         }
 
         //4
@@ -256,8 +252,11 @@ class Manager
         return full;
     }
 
-    //Metod för att kontrollera OM man kan göra en förflyttning.
-    //hör ohp med om spelet är över eller ej...
+    //Metod for checking if you can make a move.
+    //if bool is false, then the game is over.
+
+    //At the moment, just a test to check logic. Needs to be changed.
+
     public bool NoMoves()
     {
         bool noMoves = false;
