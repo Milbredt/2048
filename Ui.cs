@@ -15,7 +15,11 @@ class Ui
             }
             else
             {
-                if (tempBoxList[i].NumberInBox > 99)
+                if (tempBoxList[i].NumberInBox > 999)
+                {
+                    board += "|" + tempBoxList[i].NumberInBox + "";
+                }
+                else if (tempBoxList[i].NumberInBox > 99)
                 {
                     board += "| " + tempBoxList[i].NumberInBox + "";
                 }
