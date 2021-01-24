@@ -11,6 +11,7 @@ namespace _2048
             
             //Add deligate
             manager.CreateBoxes();    
+            manager.AddNeighbours();
             manager.AddRandom();      
             manager.AddRandom();      
             
