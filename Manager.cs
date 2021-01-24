@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 class Manager
 {
@@ -22,6 +23,73 @@ class Manager
             Box box = new Box(i);
             boxList.Add(box);
         }
+    }
+
+    public void AddNeighbours()
+    {
+        boxList[0].neighbours.Add(1);
+        boxList[0].neighbours.Add(4);
+
+        boxList[1].neighbours.Add(0);
+        boxList[1].neighbours.Add(2);
+        boxList[1].neighbours.Add(5);
+
+        boxList[2].neighbours.Add(1);
+        boxList[2].neighbours.Add(3);
+        boxList[2].neighbours.Add(6);
+
+        boxList[3].neighbours.Add(2);
+        boxList[3].neighbours.Add(7);
+
+        boxList[4].neighbours.Add(0);
+        boxList[4].neighbours.Add(5);
+        boxList[4].neighbours.Add(8);
+
+        boxList[5].neighbours.Add(1);
+        boxList[5].neighbours.Add(4);
+        boxList[5].neighbours.Add(6);
+        boxList[5].neighbours.Add(9);
+
+        boxList[6].neighbours.Add(2);
+        boxList[6].neighbours.Add(5);
+        boxList[6].neighbours.Add(7);
+        boxList[6].neighbours.Add(10);
+
+        boxList[7].neighbours.Add(3);
+        boxList[7].neighbours.Add(6);
+        boxList[7].neighbours.Add(11);
+
+        boxList[8].neighbours.Add(4);
+        boxList[8].neighbours.Add(9);
+        boxList[8].neighbours.Add(12);
+
+        boxList[9].neighbours.Add(5);
+        boxList[9].neighbours.Add(8);
+        boxList[9].neighbours.Add(10);
+        boxList[9].neighbours.Add(13);
+
+        boxList[10].neighbours.Add(6);
+        boxList[10].neighbours.Add(9);
+        boxList[10].neighbours.Add(11);
+        boxList[10].neighbours.Add(14);
+
+        boxList[11].neighbours.Add(7);
+        boxList[11].neighbours.Add(10);
+        boxList[11].neighbours.Add(15);
+
+        boxList[12].neighbours.Add(8);
+        boxList[12].neighbours.Add(13);
+
+        boxList[13].neighbours.Add(9);
+        boxList[13].neighbours.Add(12);
+        boxList[13].neighbours.Add(14);
+
+        boxList[14].neighbours.Add(10);
+        boxList[14].neighbours.Add(13);
+        boxList[14].neighbours.Add(15);
+
+        boxList[15].neighbours.Add(11);
+        boxList[15].neighbours.Add(14);
     }
 
     private void UpdateEmptyBoxesList()
@@ -251,83 +319,26 @@ class Manager
 
     //Metod for checking if you can make a move.
     //if bool is false, then the game is over.
-
-    //At the moment, just a test to check logic. Needs to be changed.
-
     public bool NoMoves()
     {
+        int possibleMoves = 0;
         bool noMoves = false;
 
-
-        if (boxList[0].NumberInBox == boxList[1].NumberInBox || boxList[1].NumberInBox == boxList[4].NumberInBox)
+        foreach (Box box in boxList)
         {
-
+            for (int i = 0; i < box.neighbours.Count; i++)
+            {
+                if (box.NumberInBox == boxList[box.neighbours[i]].NumberInBox)
+                {
+                    possibleMoves += 1;
+                }
+            }    
         }
-        else if (boxList[1].NumberInBox == boxList[0].NumberInBox || boxList[1].NumberInBox == boxList[2].NumberInBox || boxList[1].NumberInBox == boxList[5].NumberInBox)
-        {
 
-        }
-        else if (boxList[2].NumberInBox == boxList[1].NumberInBox || boxList[2].NumberInBox == boxList[3].NumberInBox || boxList[2].NumberInBox == boxList[6].NumberInBox)
-        {
-
-        }
-        else if (boxList[3].NumberInBox == boxList[2].NumberInBox || boxList[3].NumberInBox == boxList[7].NumberInBox)
-        {
-
-        }
-        else if (boxList[4].NumberInBox == boxList[5].NumberInBox || boxList[4].NumberInBox == boxList[0].NumberInBox || boxList[4].NumberInBox == boxList[8].NumberInBox)
-        {
-
-        }
-        else if (boxList[5].NumberInBox == boxList[4].NumberInBox || boxList[5].NumberInBox == boxList[6].NumberInBox || boxList[5].NumberInBox == boxList[1].NumberInBox || boxList[5].NumberInBox == boxList[9].NumberInBox)
-        {
-
-        }
-        else if (boxList[6].NumberInBox == boxList[5].NumberInBox || boxList[6].NumberInBox == boxList[7].NumberInBox || boxList[6].NumberInBox == boxList[2].NumberInBox || boxList[6].NumberInBox == boxList[10].NumberInBox)
-        {
-
-        }
-        else if (boxList[7].NumberInBox == boxList[6].NumberInBox || boxList[7].NumberInBox == boxList[3].NumberInBox || boxList[7].NumberInBox == boxList[11].NumberInBox)
-        {
-
-        }
-        else if (boxList[8].NumberInBox == boxList[4].NumberInBox || boxList[8].NumberInBox == boxList[9].NumberInBox || boxList[8].NumberInBox == boxList[12].NumberInBox)
-        {
-
-        }
-        else if (boxList[9].NumberInBox == boxList[8].NumberInBox || boxList[9].NumberInBox == boxList[10].NumberInBox || boxList[9].NumberInBox == boxList[5].NumberInBox || boxList[9].NumberInBox == boxList[13].NumberInBox)
-        {
-
-        }
-        else if (boxList[10].NumberInBox == boxList[9].NumberInBox || boxList[10].NumberInBox == boxList[11].NumberInBox || boxList[10].NumberInBox == boxList[6].NumberInBox || boxList[10].NumberInBox == boxList[14].NumberInBox)
-        {
-
-        }
-        else if (boxList[11].NumberInBox == boxList[10].NumberInBox || boxList[11].NumberInBox == boxList[7].NumberInBox || boxList[11].NumberInBox == boxList[15].NumberInBox)
-        {
-
-        }
-        else if (boxList[12].NumberInBox == boxList[13].NumberInBox || boxList[12].NumberInBox == 8)
-        {
-
-        }
-        else if (boxList[13].NumberInBox == boxList[12].NumberInBox || boxList[13].NumberInBox == boxList[14].NumberInBox || boxList[13].NumberInBox == boxList[9].NumberInBox)
-        {
-
-        }
-        else if (boxList[14].NumberInBox == boxList[13].NumberInBox || boxList[14].NumberInBox == boxList[15].NumberInBox || boxList[14].NumberInBox == boxList[10].NumberInBox)
-        {
-
-        }
-        else if (boxList[15].NumberInBox == boxList[14].NumberInBox || boxList[15].NumberInBox == boxList[11].NumberInBox)
-        {
-
-        }
-        else
+        if (possibleMoves == 0)
         {
             noMoves = true;
         }
-
         return noMoves;
     }
 }
